@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Macondo&family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      body {
+  width: 800px;
+  background-color: #fdffcd;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  color: #ffb5b5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+a {
+  color: #132743;
+  display: inline;
+  text-decoration: none;
+}
+a:hover {
+  color: #ffb5b5;
+}
+
+h2 {
+  color: #407088;
+  font-weight: 600;
+  font-size: 24px;
+}
+.search-button {
+  background-color: #407088;
+  border: none;
+  display: block;
+  width: 200px;
+  margin: auto;
+  margin-top: 20px;
+}
+.search-button:hover {
+  background-color: #ffb5b5;
+}
+
+.search-line {
+  width: 700px;
+}
+
+.forecast {
+  margin-top: 20px;
+  width: 700px;
+}
+
+.current-weather {
+  text-align: left;
+  font-size: 32px;
+  text-align: center;
+}
+
+#current-button {
+  background-color: #ffb5b5;
+}
+
+#current-button:hover {
+  background-color: #407088;
+}
+
+    </style>
+  </head>
+  <div class="container">
+    <body class="border border-2 shadow p-3 mb-5 bg-body rounded">
+      <h1>Weather in my city</h1>
+        <form id=search-form>
+  <div class="row g-3">
+    <input type="text" class="form-control search-line" placeholder="Enter your city" id=search-text-input>
+    <button type="submit" class="btn btn-primary search-button" value="search">Search</button>
+    <button id="current-button" type="submit" class="btn btn-primary search-button" value="search">Current</button>
+  </form>
+      <div class="row">
+        <div
+          class="col-6 border border-2 shadow p-3 mb-5 bg-body rounded forecast"
+        >
+          <div class="row">
+            <div class="col-6">
+              <h2>Weather in <span id=city-name>Paris</span></h2>
+              <p id=current-time></p>
+
+              <p id=description></p>
+              Humidity: <span id=humidity></span>%
+              <br />
+              Wind: <span id=wind></span>km/h
+            </div>
+              <div class="col-3 current-weather">
+              <span id=current-degrees></span><span class="units">°C</span>
+            </div>
+            <div class="col-3 "></div>
+            <div class="col-2">
+              Tue <br />
+              ☁️ <br />
+              19°C
+            </div>
+            <div class="col-2">
+              Wed <br />
+              🌞 <br />
+              21°C
+            </div>
+            <div class="col-2">
+              Thu <br />
+              ☁️ <br />
+              19°C
+            </div>
+            <div class="col-2">
+              Fri <br />
+              🌞 <br />
+              22°C
+            </div>
+            <div class="col-2">
+              Sat <br />
+              ☁️ <br />
+              18°C
+            </div>
+            <div class="col-2">
+              Sun <br />
+              ☁️ <br />
+              17°C
+            </div>
+          </div>
+        </div>
+      
+      <script>
+        let now = new Date();
+let currentTime = document.querySelector("#current-time");
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[now.getDay()];
+let hours =
+  now.getHours().toString().length < 2 ? "0" + now.getHours() : now.getHours();
+let minutes =
+  now.getMinutes().toString().length < 2
+    ? "0" + now.getMinutes()
+    : now.getMinutes();
+
+currentTime.innerHTML = `${day} ${hours}:${minutes}`;
+
+//homework 5
+
+function displayWeatherCondition(response) {
+  document.querySelector("#city-name").innerHTML = response.data.name;
+
+  document.querySelector("#current-degrees").innerHTML = Math.round(
+    response.data.main.temp
+  );
+
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
+}
+
+function search(city) {
+  let apiKey = "c4808f82df6cb22aef0e17867c210521";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-text-input").value;
+  search(city);
+}
+
+function searchLocation(position) {
+  let apiKey = "c4808f82df6cb22aef0e17867c210521";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+let currentLocationButton = document.querySelector("#current-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+search("New York");
+      </script>
+    </body>
+  </div>
+</html>
+
