@@ -1,13 +1,18 @@
-body {
-  width: 800px;
+#weather-app {
+  width: 750px;
+  margin: 10px auto;
   background-color: #fdffcd;
   font-family: "Poppins", sans-serif;
+  border: 5px solid #ffb5b5;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 h1 {
   color: #ffb5b5;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
+  padding: 7px;
 }
 a {
   color: #132743;
@@ -37,6 +42,12 @@ h2 {
 
 .search-line {
   width: 700px;
+  margin: 0 auto;
+}
+
+#weather-container {
+  margin: 0 auto;
+  max-width: 700px;
 }
 
 .forecast {
