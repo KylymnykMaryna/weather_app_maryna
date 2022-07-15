@@ -21,9 +21,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css">
   </head>
-  <div id="weather-app">
-  <div class="container">
+  
     <body>
+      <div id="weather-app-wrapper">
+      <div id="weather-app">
       <h1>Weather in my city</h1>
         <form id=search-form>
   <div class="row g-3">
@@ -36,7 +37,7 @@
           class="col-6 border border-2 shadow p-3 mb-5 bg-body rounded forecast"
         >
           <div class="row">
-            <div class="col-5">
+            <div class="col-6">
               <h2>Weather in <span id=city-name>Paris</span></h2>
               <p id=current-time></p>
               <p id=description></p>
@@ -44,9 +45,11 @@
               <p>Wind: <span id=wind></span>km/h</p>
 
             </div>
-              <div class="col-4 current-weather">
-                <img id=weather-icon-image src="src/images/sunny_icon.png" alt="sunny icon">
-              <span id=current-degrees></span><span class="units"> °C | °F</span>
+              <div class="col-3 current-weather clearfix">
+                <img id=weather-icon-image src="src/images/sunny_icon.png" alt="sunny icon" class="float-left">
+                <div class="float-left">
+              <span id=current-degrees></span><span class="units"> °C | <a href="#"> °F</a></span>
+              </div>
             </div>
             <div class="col-3 "></div>
             <div class="col-2">
@@ -82,9 +85,15 @@
           </div>
         </div>
         </div>
-          <a id="code-source-link" href="https://github.com/KylymnykMaryna/weather_app_maryna" target="_blank">Open source code</a>
-      <script src="src/app.js"></script>
+        </div>
+        </div>
+        <small>
+         <a id="code-source-link" href="https://github.com/KylymnykMaryna/weather_app_maryna" target="_blank">Open source code</a>
+      </small>
+      
+         <script src="src/app.js"></script>
+
+
     </body>
-  </div>
 </html>
 
