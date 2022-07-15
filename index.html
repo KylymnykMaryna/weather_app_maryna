@@ -85,6 +85,10 @@ h2 {
   text-decoration: underline;
 }
 
+#weather-icon-image {
+width: 40px;
+}
+
     </style>
   </head>
   <div class="container">
@@ -101,7 +105,7 @@ h2 {
           class="col-6 border border-2 shadow p-3 mb-5 bg-body rounded forecast"
         >
           <div class="row">
-            <div class="col-6">
+            <div class="col-5">
               <h2>Weather in <span id=city-name>Paris</span></h2>
               <p id=current-time></p>
 
@@ -110,8 +114,9 @@ h2 {
               <br />
               Wind: <span id=wind></span>km/h
             </div>
-              <div class="col-3 current-weather">
-              <span id=current-degrees></span><span class="units">°C</span>
+              <div class="col-4 current-weather">
+                <img id=weather-icon-image src="https://cdn-icons-png.flaticon.com/512/2580/2580627.png" alt="sunny icon">
+              <span id=current-degrees></span><span class="units"> °C | °F</span>
             </div>
             <div class="col-3 "></div>
             <div class="col-2">
