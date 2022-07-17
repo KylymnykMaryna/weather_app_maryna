@@ -82,3 +82,13 @@ h2 {
 #icon {
   width: 100px;
 }
+
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: black;
+}
