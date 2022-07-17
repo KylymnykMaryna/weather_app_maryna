@@ -79,6 +79,6 @@ h2 {
   text-decoration: underline;
 }
 
-#weather-icon-image {
-  width: 50px;
+#icon {
+  width: 100px;
 }

@@ -23,18 +23,21 @@ currentTime.innerHTML = `${day} ${hours}:${minutes}`;
 
 function displayWeatherCondition(response) {
   document.querySelector("#city-name").innerHTML = response.data.name;
-
   document.querySelector("#current-degrees").innerHTML = Math.round(
     response.data.main.temp
   );
-
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function search(city) {
