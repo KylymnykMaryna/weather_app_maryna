@@ -100,14 +100,14 @@ h2 {
 }
 
 .weather-forecast-date {
-  font-size: 16px;
-  opacity: 0.5;
+  font-size: 20px;
 }
 
 .weather-forecast-temperature-min {
-  opacity: 0.5;
+  font-size: 20px;
+  opacity: 0.7;
 }
 
 .weather-forecast-temperatures {
-  font-size: 13px;
+  font-size: 20px;
 }
