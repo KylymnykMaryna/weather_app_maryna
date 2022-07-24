@@ -93,10 +93,9 @@ h2 {
 }
 
 .weather-forecast {
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: center;
   color: #000;
-  background-color: white;
 }
 
 .weather-forecast-date {
