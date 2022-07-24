@@ -17,7 +17,7 @@ let minutes =
     ? "0" + now.getMinutes()
     : now.getMinutes();
 
-currentTime.innerHTML = `${day} ${hours}:${minutes}`;
+currentTime.innerHTML = `Last updated: ${day} ${hours}:${minutes}`;
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
